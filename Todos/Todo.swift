@@ -8,5 +8,6 @@
 import Foundation
 struct Todo {
     var title: String
-    var done: Bool
+    var isDone = false
+    
 }

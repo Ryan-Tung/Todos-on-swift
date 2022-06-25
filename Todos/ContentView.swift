@@ -9,15 +9,29 @@ import SwiftUI
 
 struct ContentView: View {
     @State var todos = [
-        Todo(title: "papap"),
-        Todo(title: "papaep"),
-        Todo(title: "o"),
+        Todo(title: "drink cancer1", details: "d"),
+        Todo(title: "visit jc's grandma and grandpa"),
+        Todo(title: "deal flour", isDone: true, details: "smash")
     ]
     var body: some View {
         NavigationView {
-        List(todos) { todo in
+            List($todos) { $todo in
+            NavigationLink{
+                TodoDetailView(todo: $todo)
+            } label: {
+            HStack{
+                Image(systemName:
+                        todo.isDone ? "checkmark.square.fill" : "square")
+                VStack(alignment: .leading){
             Text(todo.title)
-            
+                    .strikethrough(todo.isDone)
+                    if !todo.details.isEmpty {
+                    Text(todo.details)
+                        .font(.caption)
+                        .foregroundColor(.gray)
+                    }
+                    
+                }}}
         }
         .navigationTitle("tododododod")
             

@@ -22,6 +22,7 @@ struct TodoDetailView: View {
                 Text("Mark as \(todo.isDone ? "not" : "done")")
             }
         }
+        .navigationTitle(todo.title)
         
     }
     

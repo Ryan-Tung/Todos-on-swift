@@ -8,20 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
-    var todos = [
+    @State var todos = [
         Todo(title: "papap"),
         Todo(title: "papaep"),
         Todo(title: "o"),
     ]
     var body: some View {
+        NavigationView {
         List(todos) { todo in
             Text(todo.title)
             
-        }    }
+        }
+        .navigationTitle("tododododod")
+            
+        }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+        }
     }
+}
 }

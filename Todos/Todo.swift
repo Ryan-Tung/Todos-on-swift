@@ -6,8 +6,7 @@
 //
 
 import Foundation
-struct Todo {
+struct Tod: Identifiable {
     var title: String
-    var isDone = false
-    
+    var isDone = false    
 }

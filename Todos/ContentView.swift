@@ -15,28 +15,42 @@ struct ContentView: View {
     ]
     var body: some View {
         NavigationView {
-            List($todos) { $todo in
-            NavigationLink{
-                TodoDetailView(todo: $todo)
-            } label: {
-            HStack{
-                Image(systemName:
-                        todo.isDone ? "checkmark.square.fill" : "square")
-                VStack(alignment: .leading){
-            Text(todo.title)
-                    .strikethrough(todo.isDone)
-                    if !todo.details.isEmpty {
-                    Text(todo.details)
-                        .font(.caption)
-                        .foregroundColor(.gray)
+            List{
+                ForEach($todos) { $todo in
+                    NavigationLink{
+                        TodoDetailView(todo: $todo)
+                    } label: {
+                        HStack{
+                            Image(systemName:
+                                    todo.isDone ? "checkmark.square.fill" : "square")
+                            VStack(alignment: .leading){
+                                Text(todo.title)
+                                    .strikethrough(todo.isDone)
+                            
+                                if !todo.details.isEmpty {
+                                    Text(todo.details)
+                                        .font(.caption)
+                                        .foregroundColor(.gray)
+                                }}}
+                        
                     }
+                }
+                 .onDelete { indexSet in
+                 todos.remove(atOffsets: indexSet)
+                 }
                     
-                }}}
-        }
+                    
+                
+                
+                
+            
+            }
         .navigationTitle("tododododod")
             
-        }
+    }
 }
+}
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -45,4 +59,4 @@ struct ContentView_Previews: PreviewProvider {
         }
     }
 }
-}
+

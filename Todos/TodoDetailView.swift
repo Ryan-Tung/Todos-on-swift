@@ -14,12 +14,16 @@ struct TodoDetailView: View {
     var body: some View {
         VStack{
             TextField("Todo title!", text: $todo.title)
+                .textFieldStyle(.roundedBorder)
+                .padding()
                 .multilineTextAlignment(.center)
                 .background(Color(.systemGray2))
             Button{
                 todo.isDone.toggle()
             }label: {
                 Text("Mark as \(todo.isDone ? "not" : "done")")
+                    .padding()
+                    .frame(minWidth: .infinity)
             }
         }
         .navigationTitle(todo.title)
